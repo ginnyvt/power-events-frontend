@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button, Modal } from 'react-bootstrap';
 // import { LinkContainer } from 'react-router-bootstrap';
 
 const Profile = () => {
   const { user, getAccessTokenSilently } = useAuth0();
-  // console.log(user);
-
   const { name, picture, email } = user;
-
+  console.log(user);
   const [showModal, setShowModal] = useState(false);
   const showModalHandler = () => setShowModal(true);
   const closeModalHandler = () => setShowModal(false);
+
+  const token = getAccessTokenSilently().then((res) => {
+    console.log(res);
+  });
 
   return (
     <section style={{ padding: '3rem' }}>
