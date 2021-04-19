@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import dayjs from 'dayjs';
+import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useHistory } from 'react-router-dom';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -11,6 +14,8 @@ import { options } from '../../utils/duration-opts';
 import './CreateEvent.css';
 
 const CreateEvent = () => {
+  const { getAccessTokenSilently } = useAuth0();
+  const history = useHistory();
   const [startDate, setStartDate] = useState(new Date());
   const [registerDate, setRegisterDate] = useState(new Date());
   const [cancelDate, setCancelDate] = useState(registerDate);
@@ -55,12 +60,12 @@ const CreateEvent = () => {
     setCancelDate(date);
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     const { value: duration } = selectedOpt;
     const startTime = dayjs(startDate).format();
-    const endTime = dayjs().add(parseInt(duration), 'h').format();
+    const endTime = dayjs(startTime).add(parseInt(duration), 'h').format();
     const registerBefore = dayjs(registerDate).format();
     const cancelBefore = dayjs(cancelDate).format();
     const event = {
@@ -70,7 +75,18 @@ const CreateEvent = () => {
       registerBefore,
       cancelBefore,
     };
-    console.log(event);
+
+    try {
+      const token = await getAccessTokenSilently();
+      const result = await axios.post('http://localhost:5000/events', event, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      history.push('/');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -166,14 +182,14 @@ const CreateEvent = () => {
             </div>
 
             {/* No. min participants */}
-            <InputField
+            {/* <InputField
               label='Number of Min Participants'
               type='number'
               placeHolder='No. Min Participants'
               name='minParticipants'
               value={formData.minParticipants}
               onChange={inputChangeHandler}
-            />
+            /> */}
 
             {/* No. max participants */}
             <InputField

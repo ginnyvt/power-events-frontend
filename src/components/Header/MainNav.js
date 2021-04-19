@@ -9,17 +9,17 @@ const MainNav = () => {
   const { isAuthenticated } = useAuth0();
   return (
     <Nav className='mr-auto'>
-      {/* <LinkContainer to='/home'>
+      <LinkContainer to='/'>
         <Nav.Link>Home</Nav.Link>
+      </LinkContainer>
+
+      {/* <LinkContainer to='/upcoming-events'>
+        <Nav.Link>Upcoming Events</Nav.Link>
       </LinkContainer> */}
 
-      <LinkContainer to='/upcoming-events'>
-        <Nav.Link>Upcoming Events</Nav.Link>
-      </LinkContainer>
-
-      <LinkContainer to='/past-events'>
+      {/* <LinkContainer to='/past-events'>
         <Nav.Link>Past Events</Nav.Link>
-      </LinkContainer>
+      </LinkContainer> */}
 
       <LinkContainer to='/my-profile'>
         <Nav.Link>My Account</Nav.Link>
@@ -29,19 +29,19 @@ const MainNav = () => {
         <NavDropdown title='Manage Events' id='basic-nav-dropdown'>
           <NavDropdown.Item>
             <LinkContainer to='/my-events'>
-              <Nav.Link>My Events</Nav.Link>
+              <Nav>My Events</Nav>
             </LinkContainer>
           </NavDropdown.Item>
 
           <NavDropdown.Item>
             <LinkContainer to='/joined-events'>
-              <Nav.Link>Joined Event</Nav.Link>
+              <Nav>Joined Event</Nav>
             </LinkContainer>
           </NavDropdown.Item>
 
           <NavDropdown.Item>
             <LinkContainer to='/new-event'>
-              <Nav.Link>Create Event</Nav.Link>
+              <Nav>Create Event</Nav>
             </LinkContainer>
           </NavDropdown.Item>
         </NavDropdown>
