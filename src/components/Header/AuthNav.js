@@ -5,11 +5,23 @@ import { Nav } from 'react-bootstrap';
 
 import LogoutBtn from '../Auth/LogoutBtn';
 import SignupBtn from '../Auth/SignupBtn';
+import LoginBtn from '../Auth/LoginBtn';
 
 const AuthNav = () => {
   const { isAuthenticated } = useAuth0();
 
-  return <Nav>{isAuthenticated ? <LogoutBtn /> : <SignupBtn />}</Nav>;
+  return (
+    <Nav>
+      {isAuthenticated ? (
+        <LogoutBtn />
+      ) : (
+        <>
+          <LoginBtn>Login</LoginBtn>
+          <SignupBtn />
+        </>
+      )}
+    </Nav>
+  );
 };
 
 export default AuthNav;

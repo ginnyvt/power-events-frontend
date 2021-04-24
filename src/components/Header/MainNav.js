@@ -13,16 +13,8 @@ const MainNav = () => {
         <Nav.Link>Home</Nav.Link>
       </LinkContainer>
 
-      {/* <LinkContainer to='/upcoming-events'>
-        <Nav.Link>Upcoming Events</Nav.Link>
-      </LinkContainer> */}
-
-      {/* <LinkContainer to='/past-events'>
-        <Nav.Link>Past Events</Nav.Link>
-      </LinkContainer> */}
-
       <LinkContainer to='/my-profile'>
-        <Nav.Link>My Account</Nav.Link>
+        <Nav.Link>Profile</Nav.Link>
       </LinkContainer>
 
       {isAuthenticated ? (
@@ -30,12 +22,6 @@ const MainNav = () => {
           <NavDropdown.Item>
             <LinkContainer to='/my-events'>
               <Nav>My Events</Nav>
-            </LinkContainer>
-          </NavDropdown.Item>
-
-          <NavDropdown.Item>
-            <LinkContainer to='/joined-events'>
-              <Nav>Joined Event</Nav>
             </LinkContainer>
           </NavDropdown.Item>
 

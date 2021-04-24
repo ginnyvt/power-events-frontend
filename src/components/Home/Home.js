@@ -83,7 +83,7 @@ const Home = () => {
                       key={event._id}
                       className='col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-3'
                     >
-                      <SingleEvent event={event} disableBtn={disableBtn} />
+                      <SingleEvent event={event} />
                     </Col>
                   );
                 })}
