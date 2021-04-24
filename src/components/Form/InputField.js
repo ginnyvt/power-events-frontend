@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 
-const InputField = ({ value, label, placeHolder, type, onChange, name }) => {
+const InputField = ({
+  value,
+  label,
+  placeHolder,
+  type,
+  onChange,
+  name,
+  readOnly,
+}) => {
   // const inputChangeHandler = (e) => {
   //   const { value } = e.target;
   //   onChange(value);
@@ -16,6 +24,7 @@ const InputField = ({ value, label, placeHolder, type, onChange, name }) => {
           onChange={onChange}
           value={value}
           name={name}
+          readOnly={readOnly}
         ></textarea>
       ) : (
         <input
@@ -25,6 +34,7 @@ const InputField = ({ value, label, placeHolder, type, onChange, name }) => {
           onChange={onChange}
           value={value}
           name={name}
+          readOnly={readOnly}
         />
       )}
     </div>

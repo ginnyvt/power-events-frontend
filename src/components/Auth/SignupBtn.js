@@ -7,6 +7,7 @@ const SignupBtn = () => {
 
   return (
     <Button
+      className='ml-2'
       onClick={() =>
         loginWithRedirect({
           screen_hint: 'signup',
