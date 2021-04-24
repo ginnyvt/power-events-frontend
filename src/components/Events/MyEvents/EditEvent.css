@@ -1,0 +1,18 @@
+.duration ::placeholder {
+  color: blue;
+}
+
+.edit-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 3rem auto;
+  max-width: 1200px;
+}
+
+.edit-event form {
+  width: 80%;
+  padding: 2rem;
+}
